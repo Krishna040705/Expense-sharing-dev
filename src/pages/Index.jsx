@@ -235,14 +235,14 @@ function IndexPage() {
                 }}>
                   Features
                 </Link>
-                <Link to="/pricing" style={{
+                <Link to="/how-it-works" style={{
                   textDecoration: 'none',
                   color: 'rgba(255, 255, 255, 0.9)',
                   fontSize: '0.95rem',
                   fontWeight: '500',
                   transition: 'all 0.3s ease'
                 }}>
-                  Pricing
+                  How it Works
                 </Link>
                 <Link to="/about" style={{
                   textDecoration: 'none',
