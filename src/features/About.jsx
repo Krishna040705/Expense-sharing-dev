@@ -11,7 +11,7 @@ function About() {
         WebkitTextFillColor: 'transparent',
         marginBottom: '2rem'
       }}>
-        About Divipay
+        About Our Project
       </h1>
       
       <div style={{ 
@@ -23,11 +23,13 @@ function About() {
       }}>
         <h2 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '1rem' }}>Our Story</h2>
         <p style={{ color: '#4a5568', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-          Founded in 2023, Divipay began as a simple solution to a common problem - splitting bills among friends. 
-          What started as a weekend project quickly grew into a full-fledged payment platform trusted by thousands.
+          This project was built as part of the FSAD course requirements at KL University. 
+          It was developed by our team of three members and evaluated during the hackathon 
+          review that took place on May 10th and 11th, 2025.
         </p>
         <p style={{ color: '#4a5568', lineHeight: '1.6' }}>
-          Today, we're on a mission to make peer-to-peer payments as simple as sending a text message.
+          Our goal was to create a practical payment solution that demonstrates our understanding 
+          of full-stack application development principles.
         </p>
       </div>
 
@@ -60,12 +62,12 @@ function About() {
               fontSize: '2rem',
               fontWeight: 'bold'
             }}>
-              JD
+              KK
             </div>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '0.25rem' }}>John Doe</h3>
-            <p style={{ color: '#667eea', marginBottom: '0.5rem' }}>Founder & CEO</p>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '0.25rem' }}>Keerti Krishna</h3>
+            <p style={{ color: '#667eea', marginBottom: '0.5rem' }}>Team Member</p>
             <p style={{ color: '#4a5568', fontSize: '0.9rem' }}>
-              Passionate about simplifying financial transactions for everyone.
+              Contributed to frontend and backend development and UI design.
             </p>
           </div>
 
@@ -89,12 +91,41 @@ function About() {
               fontSize: '2rem',
               fontWeight: 'bold'
             }}>
-              AS
+              SS
             </div>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '0.25rem' }}>Alice Smith</h3>
-            <p style={{ color: '#667eea', marginBottom: '0.5rem' }}>Lead Developer</p>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '0.25rem' }}>Krishna Datta</h3>
+            <p style={{ color: '#667eea', marginBottom: '0.5rem' }}>Team Member</p>
             <p style={{ color: '#4a5568', fontSize: '0.9rem' }}>
-              Building secure and scalable payment solutions.
+              Worked on  API integration.
+            </p>
+          </div>
+
+          {/* Team Member 3 */}
+          <div style={{
+            textAlign: 'center',
+            padding: '1.5rem',
+            background: 'rgba(102, 126, 234, 0.05)',
+            borderRadius: '12px'
+          }}>
+            <div style={{
+              width: '100px',
+              height: '100px',
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              margin: '0 auto 1rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'white',
+              fontSize: '2rem',
+              fontWeight: 'bold'
+            }}>
+              EB
+            </div>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '0.25rem' }}>Eluru Balaji</h3>
+            <p style={{ color: '#667eea', marginBottom: '0.5rem' }}>Team Member</p>
+            <p style={{ color: '#4a5568', fontSize: '0.9rem' }}>
+              Focused on database processing.
             </p>
           </div>
         </div>
