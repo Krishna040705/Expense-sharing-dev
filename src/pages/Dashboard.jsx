@@ -17,11 +17,12 @@ const Dashboard = () => {
       const token = await user.getIdToken();
       const headers = { Authorization: `Bearer ${token}` };
 
-      const [expensesRes, groupsRes, balancesRes] = await Promise.all([
-        axios.get('http://localhost:8080/api/expenses', { headers }),
-        axios.get('http://localhost:8080/api/groups', { headers }),
-        axios.get('http://localhost:8080/api/balances', { headers }),
-      ]);
+    const [expensesRes, groupsRes, balancesRes] = await Promise.all([
+  axios.get("https://express-backend-esw.onrender.com/api/expenses", { headers }),
+  axios.get("https://express-backend-esw.onrender.com/api/groups", { headers }),
+  axios.get("https://express-backend-esw.onrender.com/api/balances", { headers }),
+]);
+
 
       setExpenses(expensesRes.data);
       setGroups(groupsRes.data);
@@ -40,7 +41,7 @@ const Dashboard = () => {
       const token = await user.getIdToken();
       const headers = { Authorization: `Bearer ${token}` };
 
-      await axios.post('http://localhost:8080/api/expenses', {
+      await axios.post("https://express-backend-esw.onrender.com/api/expenses", {
         ...newExpense,
         amount: parseFloat(newExpense.amount),
       }, { headers });

@@ -24,7 +24,7 @@ const CreateGroup = () => {
       const membersList = members.split(",").map((m) => m.trim()).filter(Boolean);
 
       await axios.post(
-        "http://localhost:8080/api/groups",
+        "https://express-backend-esw.onrender.com/api/expenses",
         {
           name: groupName,
           members: membersList,

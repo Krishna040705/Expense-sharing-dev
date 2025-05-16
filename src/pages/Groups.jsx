@@ -11,7 +11,7 @@ function Groups() {
 
   const fetchGroups = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/groups", {
+      const response = await axios.get("https://express-backend-esw.onrender.com/api/expenses", {
         headers: {
           Authorization: `Bearer ${idToken}`,
         },
@@ -34,7 +34,7 @@ function Groups() {
 
     try {
       setLoading(true);
-      await axios.post("http://localhost:8080/api/groups", { groupName }, {
+      await axios.post("https://express-backend-esw.onrender.com/api/expenses", { groupName }, {
         headers: {
           Authorization: `Bearer ${idToken}`,
         },
