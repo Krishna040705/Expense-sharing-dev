@@ -235,14 +235,14 @@ function IndexPage() {
                 }}>
                   Features
                 </Link>
-                <Link to="/pricing" style={{
+                <Link to="/how-it-works" style={{
                   textDecoration: 'none',
                   color: 'rgba(255, 255, 255, 0.9)',
                   fontSize: '0.95rem',
                   fontWeight: '500',
                   transition: 'all 0.3s ease'
                 }}>
-                  Pricing
+                  How it Works
                 </Link>
                 <Link to="/about" style={{
                   textDecoration: 'none',
@@ -559,7 +559,7 @@ function IndexPage() {
                   alignItems: 'center',
                   gap: '0.5rem'
                 }}>
-                  <span>Watch Demo</span>
+                  <span>Watch Video</span>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" strokeWidth="2"/>
                     <path d="M10 8L16 12L10 16V8Z" fill="currentColor" stroke="currentColor" strokeWidth="2"/>

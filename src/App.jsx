@@ -10,6 +10,10 @@ import Dashboard from './pages/Dashboard';
 import Groups from './pages/Groups'; // 👉 Import your Groups.jsx here
 import CreateGroup from './pages/CreateGroup';
 import UserProfile from "./pages/Profile";
+import About from './features/About';
+import Features from './features/Features';
+import HowItWorks from './features/HowItWorks';
+import DemoVideo from './pages/DemoVideo'; // Adjust path as needed
 
 
 function AppWrapper() {
@@ -29,6 +33,11 @@ function AppWrapper() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/creategroup" element={<CreateGroup />} />
           <Route path="/profile" element={<UserProfile />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/features" element={<Features />} />
+          <Route path="/how-it-works" element={<HowItWorks />} />
+          <Route path="/demo" element={<DemoVideo />} />
+
         </Routes>
       </main>
 

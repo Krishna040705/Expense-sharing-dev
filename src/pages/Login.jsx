@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiMail, FiLock, FiLogIn } from 'react-icons/fi';
+import { FiMail, FiLock, FiLogIn, FiRefreshCw } from 'react-icons/fi';
 import { useNavigate, Link } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
@@ -9,16 +9,44 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isFocused, setIsFocused] = useState({ email: false, password: false });
+  const [captcha, setCaptcha] = useState(generateCaptcha());
+  const [userInput, setUserInput] = useState('');
+  const [error, setError] = useState('');
+
+  // Generate simple math CAPTCHA
+  function generateCaptcha() {
+    const num1 = Math.floor(Math.random() * 10);
+    const num2 = Math.floor(Math.random() * 10);
+    return {
+      question: `${num1} + ${num2}`,
+      answer: num1 + num2
+    };
+  }
+
+  const refreshCaptcha = () => {
+    setCaptcha(generateCaptcha());
+    setUserInput('');
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+
+    // CAPTCHA verification
+    if (parseInt(userInput) !== captcha.answer) {
+      setError('Incorrect CAPTCHA answer');
+      refreshCaptcha();
+      return;
+    }
+
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       localStorage.setItem('user', JSON.stringify(user));
       navigate('/dashboard');
     } catch (error) {
-      alert("Invalid credentials: " + error.message);
+      setError("Invalid credentials: " + error.message);
+      refreshCaptcha();
     }
   };
 
@@ -224,6 +252,20 @@ function Login() {
             </p>
           </div>
 
+          {error && (
+            <div style={{
+              backgroundColor: '#ffebee',
+              color: '#c62828',
+              padding: '12px',
+              borderRadius: '8px',
+              marginBottom: '20px',
+              fontSize: '0.9rem',
+              borderLeft: '4px solid #c62828'
+            }}>
+              {error}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit}>
             <div style={{ marginBottom: '25px' }}>
               <label style={{
@@ -319,6 +361,76 @@ function Login() {
               </div>
             </div>
 
+            {/* CAPTCHA Section */}
+            <div style={{ marginBottom: '25px' }}>
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: '12px'
+              }}>
+                <label style={{
+                  fontSize: '0.9rem',
+                  color: '#444',
+                  fontWeight: '500'
+                }}>
+                  CAPTCHA Verification
+                </label>
+                <button 
+                  type="button" 
+                  onClick={refreshCaptcha}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    color: '#667eea',
+                    fontSize: '0.8rem',
+                    fontWeight: '500'
+                  }}
+                >
+                  <FiRefreshCw style={{ marginRight: '5px' }} />
+                  Refresh
+                </button>
+              </div>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                background: 'rgba(255, 255, 255, 0.9)',
+                borderRadius: '12px',
+                border: '1px solid #ddd',
+                transition: 'all 0.3s ease',
+                padding: '0 15px',
+                boxShadow: '0 2px 5px rgba(0,0,0,0.05)'
+              }}>
+                <div style={{
+                  padding: '0 10px',
+                  fontWeight: 'bold',
+                  color: '#667eea'
+                }}>
+                  {captcha.question} =
+                </div>
+                <input
+                  type="text"
+                  placeholder="Your answer"
+                  value={userInput}
+                  onChange={(e) => setUserInput(e.target.value)}
+                  style={{
+                    flex: 1,
+                    padding: '15px 10px',
+                    background: 'transparent',
+                    border: 'none',
+                    fontSize: '0.95rem',
+                    color: '#333',
+                    outline: 'none',
+                    fontWeight: '500'
+                  }}
+                  required
+                />
+              </div>
+            </div>
+
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
@@ -345,8 +457,8 @@ function Login() {
                 />
                 Remember me
               </label>
-              <a
-                href="/forgot-password"
+              <Link
+                to="/forgot-password"
                 style={{
                   color: '#667eea',
                   textDecoration: 'none',
@@ -354,7 +466,7 @@ function Login() {
                 }}
               >
                 Forgot password?
-              </a>
+              </Link>
             </div>
 
             <button
@@ -393,8 +505,8 @@ function Login() {
             fontSize: '0.9rem'
           }}>
             Don't have an account?{' '}
-            <a
-              href="/register"
+            <Link
+              to="/register"
               style={{
                 color: '#667eea',
                 fontWeight: '600',
@@ -402,7 +514,7 @@ function Login() {
               }}
             >
               Sign up now
-            </a>
+            </Link>
           </div>
         </div>
       </div>
