@@ -153,7 +153,7 @@ function Footer() {
               color: 'rgba(255, 255, 255, 0.8)'
             }}>
               <i className="fas fa-phone-alt"></i>
-              <span>+91 6363193384</span>
+              <span>+91 7019651164</span>
             </li>
             <li style={{
               display: 'flex',
